@@ -1,13 +1,14 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+  let imagen = "escudo-BOCAJRS.png"
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={imagen} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Boca Juniors
         </p>
         <a
           className="App-link"
