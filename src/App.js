@@ -1,8 +1,8 @@
 import './App.css';
-import ItemList from './components/ItemListContainer/ItemList';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import NavBar from './components/NavBar/NavBar.jsx';
 
-import Header from './components/NavBar/NavBar.jsx';
+
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
         <NavBar />
-        <ItemList />  
+        <ItemListContainer /> 
     </div>
   );
 }
