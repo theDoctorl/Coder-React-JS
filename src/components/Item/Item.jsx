@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-const Item = ({id, nombre, imagen, precio}) => {
+const Item = ({nombre, imagen, precio}) => {
 
     let styles = {
         width:200,
