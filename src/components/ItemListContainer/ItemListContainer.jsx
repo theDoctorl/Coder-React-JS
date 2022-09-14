@@ -1,36 +1,36 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import imagen from "../Images/CamisetasArgentina/Arg-86.webp";
-import imagen2 from "../Images/CamisetasArgentina/Arg-93.webp";
-import imagen3 from "../Images/CamisetasArgentina/ARG-94.webp";
+import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/itemList";
+import {products} from "../Productos/Products";
 
 
 
 
 const ItemListContainer = () =>{
 
-
-    
-
-
     const [items, setItems] = useState([]);
+    const {genero} = useParams();
+
     useEffect(()=>{
-        const productos =[
-            {"id": 1,   "nombre": "Camiseta retro Argentina. Temporada `86", "precio": 10000, "imagen": imagen},
-            {"id": 2,  "nombre": "Camiseta retro Argentina. Temporada `93", "precio": 9500, "imagen": imagen2},
-            {"id": 3,  "nombre": "Camiseta retro Argentina. Temporada `94", "precio": 6300, "imagen": imagen3 },       
-        ];
+
+            let casaca = "";
+            if(genero==="europa"){
+                casaca = "europa"
+            }else if(genero==="argentina"){
+                casaca="argentina"
+            };
             const promesa = new Promise((resolve, reject)=>{
                 setTimeout(() => {
-                    resolve(productos)
-                }, 2000);
+                    resolve(products)
+                }, 500);
             });
             promesa.then((respuesta)=>{
-                setItems(respuesta);
+                const arrayProductos = respuesta.filter(prod=>prod.category===casaca)
+                setItems(arrayProductos);
             });
-    }, []);    
+    }, [genero]);    
 
     return(
             <div className="container">

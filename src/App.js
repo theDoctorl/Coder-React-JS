@@ -1,7 +1,10 @@
 import './App.css';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Inicio from './components/Inicio/Inicio';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import NavBar from './components/NavBar/NavBar.jsx';
+import Carrito from './components/carrito/carrito';
 
 
 
@@ -9,11 +12,15 @@ import NavBar from './components/NavBar/NavBar.jsx';
 function App() {
   
   return (
-    <div>
+    <BrowserRouter>
         <NavBar />
-        <ItemListContainer /> 
-        <ItemDetailContainer />
-    </div>
+    <Routes>
+      <Route exact path="/" element={<Inicio/>}/>
+      <Route exact path="/categoria/:genero" element={<ItemListContainer/>}/>
+      <Route exact path= "/detalle/:id" element={<ItemDetailContainer/>}/>
+      <Route exact path="/carrito" element={<Carrito/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 

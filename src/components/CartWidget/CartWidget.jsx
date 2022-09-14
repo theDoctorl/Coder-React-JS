@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Carrito from "../Images/carrito.png"
 
 
@@ -11,7 +12,7 @@ const CartWidget = () => {
     };
     return(
             
-            <a href=""><li><img src={Carrito} style={styles} alt="" /></li></a>
+            <Link to={"/carrito"}><li><img src={Carrito} style={styles} alt="" /></li></Link>
     );
 };
 
