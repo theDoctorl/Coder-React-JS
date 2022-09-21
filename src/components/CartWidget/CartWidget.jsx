@@ -13,7 +13,7 @@ const CartWidget = () => {
             <button type="button" className="btn fondo_naranja position-relative me-1" title="Vaciar Carrito" onClick={()=> {clear()}}>
                 <img src={cesto} alt="Cesto" />
             </button>
-            <Link to={"/cart"}>
+            <Link to={"/carrito"}>
                 <button type="button" className="btn fondo_naranja position-relative" title="Ir al Carrito">
                     <img src={carrito} alt="Carrito" />
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{cartTotal()}</span>

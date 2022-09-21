@@ -2,7 +2,7 @@ import React, { useState, createContext } from "react";
 
 export const CartContext = createContext();
 
-const Provider = ({children}) => {
+const Provider = (props) => {
     const [cart, setCart] = useState([]);
 
     const addItem = (item, cantidad) => {
@@ -23,13 +23,13 @@ const Provider = ({children}) => {
         return cart.some(item => item.id === id);
     }
 
-    const cartTotal = () => { //Me había olvidado de agregar al Provider del Contexto, la función cartTotal. Es por esa razón que la llamaba desde el otro lado y me decía que no lo reconocía.
+    const cartTotal = () => { 
         return cart.reduce((total, item) => total+=item.cantidad, 0);
     }
 
     return (
         <CartContext.Provider value={{cart, addItem, clear, cartTotal}}>
-            {children}
+            {props.children}
         </CartContext.Provider>
     )
 }

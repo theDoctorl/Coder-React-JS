@@ -21,7 +21,7 @@ const ItemDetail = ({item}) => {
                 <h3>{item.destacado}</h3>
                 <p><b>${item.precio}</b></p>
                 <p>{item.descripcion}</p>
-                {counter === 0 ? <ItemCount initial={1} stock={item.stock} onAdd={onAdd} /> : <Link to={"/cart"} className="btn fondo_naranja">Ir al Carrito</Link>}
+                {counter === 0 ? <ItemCount initial={1} stock={item.stock} onAdd={onAdd} /> : <Link to={"/carrito"} className="btn fondo_naranja">Ir al Carrito</Link>}
             </div>
         </div>
     )
