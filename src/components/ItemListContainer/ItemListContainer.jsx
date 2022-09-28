@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/itemList";
-import {products} from "../Productos/Products";
+import {getDocs, collection, getFirestore, query, where } from "firebase/firestore";
 
 
 
@@ -11,26 +11,28 @@ import {products} from "../Productos/Products";
 const ItemListContainer = () =>{
 
     const [items, setItems] = useState([]);
-    const {genero} = useParams();
+    const {categoryName} = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
+        const db = getFirestore();
+        const itemsCollection = collection(db, "products");
+        const ref = categoryName
+        ? query(itemsCollection, where('category', '==', categoryName))
+        : itemsCollection
 
-            let casaca = "";
-            if(genero==="europa"){
-                casaca = "europa"
-            }else if(genero==="argentina"){
-                casaca="argentina"
-            };
-            const promesa = new Promise((resolve, reject)=>{
-                setTimeout(() => {
-                    resolve(products)
-                }, 500);
+
+        getDocs(ref).then((responde)=>{
+           const products = responde.docs.map((prod)=>{
+
+                return{
+                    id: prod.id,
+                    ...prod.data()
+                }
             });
-            promesa.then((respuesta)=>{
-                const arrayProductos = respuesta.filter(prod=>prod.category===casaca)
-                setItems(arrayProductos);
-            });
-    }, [genero]);    
+            setItems(products)
+        });
+
+    }, [categoryName]) 
 
     return(
             <div className="container">
