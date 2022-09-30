@@ -15,19 +15,17 @@ const ItemListContainer = () =>{
 
     useEffect(() => {
         const db = getFirestore();
-        const itemsCollection = collection(db, "products");
+        const itemsCollection = collection(db, 'Products');
         const ref = categoryName
-        ? query(itemsCollection, where('category', '==', categoryName))
-        : itemsCollection
-
+        ? query(itemsCollection, where('categoria', '==', categoryName))
+        : itemsCollection;
 
         getDocs(ref).then((responde)=>{
            const products = responde.docs.map((prod)=>{
-
                 return{
                     id: prod.id,
                     ...prod.data()
-                }
+                };
             });
             setItems(products)
         });

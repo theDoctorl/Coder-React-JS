@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
     useEffect(() => {
         const db = getFirestore();
-        const itemsCollection = collection(db, "products");
+        const itemsCollection = collection(db, "Products");
         const ref = doc(itemsCollection, id)
 
         getDoc(ref).then((res)=>{
