@@ -6,6 +6,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import NavBar from './components/NavBar/NavBar.jsx';
 import Carrito from './components/carrito/carrito';
 import Provider from './components/Context/Context';
+import Checkout from './components/Checkout/Checkout';
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/categoria/:categoryName" element={<ItemListContainer />} />
           <Route exact path="/detalle/:id" element={<ItemDetailContainer />} />
           <Route exact path="/carrito" element={<Carrito />} />
+          <Route exact path="/checkout" element={<Checkout />} />
         </Routes>
       </BrowserRouter>
     </Provider>

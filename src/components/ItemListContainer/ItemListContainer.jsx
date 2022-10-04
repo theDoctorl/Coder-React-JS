@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/itemList";
+import Loading from "../Cargando/Cargando.jsx";
 import {getDocs, collection, getFirestore, query, where } from "firebase/firestore";
 
 
@@ -11,6 +12,7 @@ import {getDocs, collection, getFirestore, query, where } from "firebase/firesto
 const ItemListContainer = () =>{
 
     const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
     const {categoryName} = useParams();
 
     useEffect(() => {
@@ -22,7 +24,11 @@ const ItemListContainer = () =>{
 
         getDocs(ref).then((responde)=>{
            const products = responde.docs.map((prod)=>{
-                return{
+            if (responde.size > 0) {
+                setLoading(false);
+            }    
+            return{
+                    
                     id: prod.id,
                     ...prod.data()
                 };
@@ -34,7 +40,7 @@ const ItemListContainer = () =>{
 
     return(
             <div className="container">
-                <ItemList items={items} />
+                {loading ? <Loading /> : <ItemList items={items} />}  
             </div>
     );
 
