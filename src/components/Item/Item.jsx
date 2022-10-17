@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const Item = ({item}) => {
 
 const styles = {
-    height:320, 
-    weight: 250
+    height:300, 
+    weight: 200
 }
 
     return (
