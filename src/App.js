@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar.jsx';
 import Carrito from './components/carrito/carrito';
 import Provider from './components/Context/Context';
 import Checkout from './components/Checkout/Checkout';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/carrito" element={<Carrito />} />
           <Route exact path="/checkout" element={<Checkout />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </Provider>
 

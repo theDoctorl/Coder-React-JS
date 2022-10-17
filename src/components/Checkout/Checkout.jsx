@@ -12,19 +12,18 @@ const Checkout = () => {
 
     const sendOrder = () => {
         if ((nombre !== "") && (email !== "") && (telefono !== "")) {
-            //Creo el objeto con los Datos del Comprador
+            
             const buyer = {name:nombre, email:email, phone:telefono};
-            //Creo el array de productos
             const items = [];
-            cart.forEach(item => { //Recorro el array del Carrito y voy agregando los productos, en el array de productos que voy a subir al Firestore
+            cart.forEach(item => { 
                 items.push({id:item.id, title:item.nombre, price:item.precio, quantity:item.cantidad});
             });
             const date = new Date();
             const now = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-            //Creo el objeto con todos los datos de la Compra
+            
             const order = {buyer:buyer, items:items, date:now, total:cartSuma()};
             
-            //Creo que la conexión al Firestore, para cargar la Orden de Compra
+        
             const db = getFirestore();
             const orderCollection =  collection(db, "products");
             addDoc(orderCollection, order).then(({id}) => {
@@ -58,7 +57,7 @@ const Checkout = () => {
                         <tbody>
                             {cart.map(item => (
                                 <tr key={item.id}>
-                                    <td className="text-start"><img src={"images/" + item.imagen} alt={item.nombre} title={item.nombre} width="120" /></td>
+                                    <td className="text-start"><img src={item.imagenID} alt={item.nombre} title={item.nombre} width="120" /></td>
                                     <td className="text-start align-middle">{item.nombre} x {item.cantidad}</td>
                                     <td className="text-end align-middle">${item.cantidad * item.precio}</td>
                                 </tr>

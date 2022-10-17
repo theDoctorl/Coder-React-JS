@@ -3,16 +3,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import {CartContext} from "../Context/Context";
 import carrito from "../Images/basket.svg";
-import cesto from "../Images/trash3.svg";
 
 const CartWidget = () => {
-    const {cartTotal, clear} = useContext(CartContext); 
+    const {cartTotal} = useContext(CartContext); 
 
     return (
         <div>
-            <button type="button" className="btn fondo_naranja position-relative me-1" title="Vaciar Carrito" onClick={()=> {clear()}}>
-                <img src={cesto} alt="Cesto" />
-            </button>
+            
             <Link to={"/carrito"}>
                 <button type="button" className="btn fondo_naranja position-relative" title="Ir al Carrito">
                     <img src={carrito} alt="Carrito" />

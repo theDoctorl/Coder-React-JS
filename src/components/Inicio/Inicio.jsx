@@ -39,7 +39,17 @@ const inicio = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>`
+
+            <div class="alert alert-success text-center" role="alert">
+                <h4 class="alert-heading">Bienvenido a RetroFutbol!</h4>
+                <p>En el catalogo encontraras las mejores camisetas retro!</p>
+                <hr/>
+                    <p class="mb-0">Pronto agregaremos nuevos productos y categorias. PATIENCE!</p>
+            </div>
+
+
         </div>
+
     );
 };
 
